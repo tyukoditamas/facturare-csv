@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class AssetInvoiceLineStrategy implements InvoiceLineStrategy {
+    private static final Integer NR_CRT = 1;
     private static final String CUSTOMER_TAX_CODE = "DE351004592";
     private static final String DEVIZ = "EUR";
     private static final String DESC_BASE = "E-COMMERCE DECLARATION";
@@ -28,6 +29,7 @@ class AssetInvoiceLineStrategy implements InvoiceLineStrategy {
 
     private InvoiceLine buildBaseLine(SourceRow row) {
         return new InvoiceLine(
+                NR_CRT,
                 CUSTOMER_TAX_CODE,
                 DEVIZ,
                 DESC_BASE,
@@ -40,6 +42,7 @@ class AssetInvoiceLineStrategy implements InvoiceLineStrategy {
 
     private InvoiceLine buildCustomsLine(SourceRow row) {
         return new InvoiceLine(
+                NR_CRT,
                 "",
                 DEVIZ,
                 DESC_CUSTOMS,

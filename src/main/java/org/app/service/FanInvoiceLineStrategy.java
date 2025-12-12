@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class FanInvoiceLineStrategy implements InvoiceLineStrategy {
+    private static final Integer NR_CRT = 1;
     private static final String CUSTOMER_TAX_CODE = "RO45827190";
     private static final String DEVIZ = "RON";
     private static final String DESC_BASE = "Prestatii H7";
@@ -31,6 +32,7 @@ class FanInvoiceLineStrategy implements InvoiceLineStrategy {
 
     private InvoiceLine buildBaseLine(SourceRow row) {
         return new InvoiceLine(
+                NR_CRT,
                 CUSTOMER_TAX_CODE,
                 DEVIZ,
                 DESC_BASE,
@@ -43,6 +45,7 @@ class FanInvoiceLineStrategy implements InvoiceLineStrategy {
 
     private InvoiceLine buildTirLine(SourceRow row) {
         return new InvoiceLine(
+                NR_CRT,
                 CUSTOMER_TAX_CODE,
                 DEVIZ,
                 DESC_TIR,
@@ -55,6 +58,7 @@ class FanInvoiceLineStrategy implements InvoiceLineStrategy {
 
     private InvoiceLine buildCustomsLine(SourceRow row) {
         return new InvoiceLine(
+                NR_CRT,
                 "",
                 DEVIZ,
                 DESC_CUSTOMS,

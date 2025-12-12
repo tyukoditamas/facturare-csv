@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 public class InvoiceLine {
+    private final Integer nrCrt;
     private final String customerTaxCode;
     private final String deviz;
     private final String productDescription;
@@ -12,20 +13,26 @@ public class InvoiceLine {
     private final BigDecimal vatRate;
     private final String productNote;
 
-    public InvoiceLine(String customerTaxCode,
+    public InvoiceLine(Integer nrCrt,
+                       String customerTaxCode,
                        String deviz,
                        String productDescription,
                        BigDecimal quantity,
                        BigDecimal priceWithoutVat,
                        BigDecimal vatRate,
                        String productNote) {
-        this.customerTaxCode = Objects.requireNonNull(customerTaxCode, "cod fiscal");
+        this.nrCrt = Objects.requireNonNull(nrCrt, "nr.crt");
+        this.customerTaxCode = Objects.requireNonNull(customerTaxCode, "CIF/CNP");
         this.deviz = Objects.requireNonNull(deviz, "deviz");
         this.productDescription = Objects.requireNonNull(productDescription, "produs");
         this.quantity = Objects.requireNonNull(quantity, "cantitate");
         this.priceWithoutVat = Objects.requireNonNull(priceWithoutVat, "pret FTVA");
         this.vatRate = Objects.requireNonNull(vatRate, "cota TVA");
         this.productNote = Objects.requireNonNull(productNote, "productNote");
+    }
+
+    public Integer getNrCrt() {
+        return nrCrt;
     }
 
     public String getCustomerTaxCode() {
@@ -55,9 +62,5 @@ public class InvoiceLine {
     public String getProductNote() {
         return productNote;
     }
-
-//    public int getLineNumberWithinRow() {
-//        return lineNumberWithinRow;
-//    }
 
 }

@@ -16,7 +16,8 @@ import java.util.List;
 public class InvoiceCsvWriter {
     private static final CSVFormat CSV_FORMAT = CSVFormat.DEFAULT.builder()
             .setHeader(
-                    "cod fiscal",
+                    "nr.crt",
+                    "CIF/CNP",
                     "deviz",
                     "produs",
                     "cantitate",
@@ -42,6 +43,7 @@ public class InvoiceCsvWriter {
              CSVPrinter printer = new CSVPrinter(writer, format)) {
             for (InvoiceLine line : lines) {
                 printer.printRecord(
+                        line.getNrCrt(),
                         line.getCustomerTaxCode(),
                         line.getDeviz(),
                         line.getProductDescription(),
