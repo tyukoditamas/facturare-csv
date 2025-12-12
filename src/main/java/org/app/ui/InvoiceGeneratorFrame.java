@@ -37,7 +37,7 @@ public class InvoiceGeneratorFrame extends JFrame {
     private final InvoiceGenerationService generationService = new InvoiceGenerationService();
 
     public InvoiceGeneratorFrame() {
-        super("Invoice CSV Generator");
+        super("Program Facturare - Trendyol");
         initUi();
     }
 
