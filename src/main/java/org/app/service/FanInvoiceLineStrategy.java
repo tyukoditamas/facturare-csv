@@ -10,6 +10,7 @@ import java.util.List;
 class FanInvoiceLineStrategy implements InvoiceLineStrategy {
     private static final Integer NR_CRT = 1;
     private static final String CUSTOMER_TAX_CODE = "RO45827190";
+    private static final String CUSTOMER_NAME = "FAN";
     private static final String DEVIZ = "RON";
     private static final String DESC_BASE = "Prestatii H7";
     private static final String DESC_TIR = "inregistrare carnet TIR";
@@ -34,6 +35,7 @@ class FanInvoiceLineStrategy implements InvoiceLineStrategy {
         return new InvoiceLine(
                 NR_CRT,
                 CUSTOMER_TAX_CODE,
+                CUSTOMER_NAME,
                 DEVIZ,
                 DESC_BASE,
                 BigDecimal.valueOf(row.getLinesCount()),
@@ -47,6 +49,7 @@ class FanInvoiceLineStrategy implements InvoiceLineStrategy {
         return new InvoiceLine(
                 NR_CRT,
                 CUSTOMER_TAX_CODE,
+                CUSTOMER_NAME,
                 DEVIZ,
                 DESC_TIR,
                 BigDecimal.ONE,
@@ -60,6 +63,7 @@ class FanInvoiceLineStrategy implements InvoiceLineStrategy {
         return new InvoiceLine(
                 NR_CRT,
                 "",
+                CUSTOMER_NAME,
                 DEVIZ,
                 DESC_CUSTOMS,
                 BigDecimal.ONE,

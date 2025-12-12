@@ -10,11 +10,12 @@ import java.util.List;
 class AssetInvoiceLineStrategy implements InvoiceLineStrategy {
     private static final Integer NR_CRT = 1;
     private static final String CUSTOMER_TAX_CODE = "DE351004592";
+    private static final String CUSTOMER_NAME = "ASSET GLI GMBH";
     private static final String DEVIZ = "EUR";
     private static final String DESC_BASE = "E-COMMERCE DECLARATION";
     private static final String DESC_CUSTOMS = "CUSTOMS CLEARANCE OUTSIDE OPENING HOURS/TYPE OF TRANSPORT";
     private static final BigDecimal VAT_RATE = BigDecimal.ZERO;
-    private static final BigDecimal PRICE_ZERO = BigDecimal.ZERO;
+    private static final BigDecimal PRICE_ZERO = BigDecimal.valueOf(0.4);
     private static final BigDecimal PRICE_CUSTOMS = BigDecimal.valueOf(180);
 
     @Override
@@ -31,6 +32,7 @@ class AssetInvoiceLineStrategy implements InvoiceLineStrategy {
         return new InvoiceLine(
                 NR_CRT,
                 CUSTOMER_TAX_CODE,
+                CUSTOMER_NAME,
                 DEVIZ,
                 DESC_BASE,
                 BigDecimal.valueOf(row.getLinesCount()),
@@ -44,6 +46,7 @@ class AssetInvoiceLineStrategy implements InvoiceLineStrategy {
         return new InvoiceLine(
                 NR_CRT,
                 "",
+                CUSTOMER_NAME,
                 DEVIZ,
                 DESC_CUSTOMS,
                 BigDecimal.ONE,

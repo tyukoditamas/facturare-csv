@@ -6,6 +6,7 @@ import java.util.Objects;
 public class InvoiceLine {
     private final Integer nrCrt;
     private final String customerTaxCode;
+    private final String customerName;
     private final String deviz;
     private final String productDescription;
     private final BigDecimal quantity;
@@ -15,6 +16,7 @@ public class InvoiceLine {
 
     public InvoiceLine(Integer nrCrt,
                        String customerTaxCode,
+                       String customerName,
                        String deviz,
                        String productDescription,
                        BigDecimal quantity,
@@ -23,6 +25,7 @@ public class InvoiceLine {
                        String productNote) {
         this.nrCrt = Objects.requireNonNull(nrCrt, "nr.crt");
         this.customerTaxCode = Objects.requireNonNull(customerTaxCode, "CIF/CNP");
+        this.customerName = Objects.requireNonNull(customerName, "den. client");
         this.deviz = Objects.requireNonNull(deviz, "deviz");
         this.productDescription = Objects.requireNonNull(productDescription, "produs");
         this.quantity = Objects.requireNonNull(quantity, "cantitate");
@@ -37,6 +40,10 @@ public class InvoiceLine {
 
     public String getCustomerTaxCode() {
         return customerTaxCode;
+    }
+
+    public String getCustomerName() {
+        return customerName;
     }
 
     public String getDeviz() {

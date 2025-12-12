@@ -35,6 +35,6 @@ public class SourceRow {
     }
 
     public String buildProductNote() {
-        return "OTP " + mrn;
+        return mrn;
     }
 }

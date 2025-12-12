@@ -18,12 +18,17 @@ public class InvoiceCsvWriter {
             .setHeader(
                     "nr.crt",
                     "CIF/CNP",
+                    "den. client",
                     "deviz",
-                    "produs",
-                    "cantitate",
-                    "pret FTVA",
+                    "Produs",
+                    "Serie produs",
+                    "Cant",
+                    "UM",
+                    "Pret FTVA",
                     "cota TVA",
-                    "nota produs"
+                    "nota produs",
+                    "scutit TVA (0/1)",
+                    "motiv scutire TVA"
             ).build();
 
     public Path write(Path outputPath, List<InvoiceLine> lines) throws IOException {
@@ -41,16 +46,26 @@ public class InvoiceCsvWriter {
 
         try (Writer writer = Files.newBufferedWriter(absolute, StandardCharsets.UTF_8, options);
              CSVPrinter printer = new CSVPrinter(writer, format)) {
+            int rowIndex = 0;
             for (InvoiceLine line : lines) {
+                boolean includeCustomerFields = !append && rowIndex == 0;
+                String customerTaxCode = includeCustomerFields ? line.getCustomerTaxCode() : "";
+                String customerName = includeCustomerFields ? line.getCustomerName() : "";
+                rowIndex++;
                 printer.printRecord(
                         line.getNrCrt(),
-                        line.getCustomerTaxCode(),
+                        customerTaxCode == null ? "" : customerTaxCode,
+                        customerName == null ? "" : customerName,
                         line.getDeviz(),
                         line.getProductDescription(),
+                        "",
                         formatNumber(line.getQuantity()),
+                        "BUC",
                         formatNumber(line.getPriceWithoutVat()),
                         formatNumber(line.getVatRate()),
-                        line.getProductNote()
+                        line.getProductNote(),
+                        "",
+                        ""
                 );
             }
         }
